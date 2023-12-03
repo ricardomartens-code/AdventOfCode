@@ -2,13 +2,15 @@
 // DATE: 1/12/2023
 // DAY 1 - ADVENT OF CODE
 
+using Utilities;
+
 namespace Day01
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string[] lines = File.ReadAllLines("input.txt");
+            string[] lines = AoCUtilities.GetInput();
             int sum = 0;
 
             // We need to add the end of each letter back to the string, otherwise overlapping words will go wrong.

@@ -1,6 +1,7 @@
 ﻿// AUTHOR: RICARDO MARTENS
 // DATE: 2/12/2023
 // DAY 2 - ADVENT OF CODE
+using Utilities;
 
 namespace Day02
 {
@@ -8,7 +9,7 @@ namespace Day02
     {
         static void Main(string[] args)
         {
-            string[] lines = File.ReadAllLines("input.txt");
+            string[] lines = AoCUtilities.GetInput();
 
             int redCubeLimit = 12;
             int greenCubeLimit = 13;
