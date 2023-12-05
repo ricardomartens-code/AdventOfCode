@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿// AUTHOR: RICARDO MARTENS
+// DATE: 4/12/2023
+// DAY 4 - ADVENT OF CODE
+
 using Utilities;
 
 namespace Day04
