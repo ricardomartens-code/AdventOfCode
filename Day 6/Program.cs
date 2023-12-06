@@ -21,36 +21,33 @@ namespace Day06
             {
                 if (line.StartsWith("Time:"))
                 {
-                    string times = Regex.Replace(line.Substring(5 + line.IndexOf("Time:")).TrimStart(), " +", " ");
-                    string[] timesInRace = Regex.Split(times, " ");
-
-                    foreach (string time in timesInRace)
-                    {
-                        timings.Add(Convert.ToInt32(time));
-                    }
-
-                    long.TryParse(line.Substring(5 + line.IndexOf("Time:")).Replace(" ", "").TrimStart(), out long timeResult);
-                    timePartTwo = timeResult;
+                    ParseLine(line, "Time:", timings, out timePartTwo);
                 }
-                
-                if (line.StartsWith("Distance:"))
+                else if (line.StartsWith("Distance:"))
                 {
-                    string raceDistance = Regex.Replace(line.Substring(9 + line.IndexOf("Distance:")).TrimStart(), " +", " ");
-                    string[] distancesInRace = Regex.Split(raceDistance, " ");
-
-                    foreach (string distance in distancesInRace)
-                    {
-                        distances.Add(Convert.ToInt32(distance));
-                    }
-
-                    long.TryParse(line.Substring(9 + line.IndexOf("Distance:")).Replace(" ", "").TrimStart(), out long distanceResult);
-                    distancePartTwo = distanceResult;
+                    ParseLine(line, "Distance:", distances, out distancePartTwo);
                 }
             }
+
             Console.WriteLine($"Answer for part 1: {CalculatePart1(timings, distances)}");
             Console.WriteLine($"Answer for part 2: {CalculatePart2(timePartTwo, distancePartTwo)}");
         }
 
+        private static void ParseLine(string line, string prefix, List<long> list, out long partTwoValue)
+        {
+            string values = Regex.Replace(line.Substring(prefix.Length).Trim(), " +", " ");
+            string[] valuesInRace = Regex.Split(values, " ");
+
+            foreach (string value in valuesInRace)
+            {
+                if (long.TryParse(value, out long result))
+                {
+                    list.Add(result);
+                }
+            }
+
+            long.TryParse(values.Replace(" ", ""), out partTwoValue);
+        }
 
         private static int CalculatePart1(List<long> timings, List<long> distances)
         {
@@ -74,22 +71,23 @@ namespace Day06
 
         private static long CalculatePart2(long timing, long distance)
         {
-            // QUADRATIC FORMULA WOOOOOOOO
             double a = -1;
             double b = timing;
             double c = -distance;
 
             double discrim = b * b - 4 * a * c;
 
-            if(discrim < 0) {
+            if (discrim < 0)
+            {
+                Console.WriteLine("No root found");
                 return -1;
             }
 
             double sqrtDiscrim = Math.Sqrt(discrim);
-            double rootA = (-b + sqrtDiscrim) / (2 * a);
-            double rootB = (-b - sqrtDiscrim) / (2 * a);
+            double root1 = (-b + sqrtDiscrim) / (2 * a);
+            double root2 = (-b - sqrtDiscrim) / (2 * a);
 
-            double maxRoot = Math.Max(rootA, rootB);
+            double maxRoot = Math.Max(root1, root2);
 
             long roundedDownRoot = (long)Math.Floor(maxRoot);
             long roundedUpRoot = (long)Math.Ceiling(maxRoot);
