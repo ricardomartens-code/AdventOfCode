@@ -72,7 +72,7 @@ namespace Day06
             return totalBeatenRecords;
         }
 
-        private static double CalculatePart2(long timing, long distance)
+        private static long CalculatePart2(long timing, long distance)
         {
             // QUADRATIC FORMULA WOOOOOOOO
             double a = -1;
