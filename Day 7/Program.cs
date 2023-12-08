@@ -1,4 +1,8 @@
-﻿using Day_7;
+﻿// AUTHOR: RICARDO MARTENS
+// DATE: 7/12/2023
+// DAY 7 - ADVENT OF CODE
+
+using Day_7;
 using Utilities;
 
 internal class Program
