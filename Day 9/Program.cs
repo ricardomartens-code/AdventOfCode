@@ -15,22 +15,21 @@ namespace Day09
             long resultPartTwo = 0;
             foreach (string line in lines)
             {
-                Console.WriteLine(line);
                 List<int> numbers = line.Split(' ').Select(int.Parse).ToList();
                 List<List<int>> sequenceNumberList = new()
                 {
                     numbers
                 };
 
-                resultPartOne += ExtraplorateTree(sequenceNumberList);
+                resultPartOne += ExtrapolateTree(sequenceNumberList);
                 Console.WriteLine($"The sum of all extrapolated values for part 1 is {resultPartOne}");
-                resultPartTwo += ExtraplorateTree(sequenceNumberList, true);
+                resultPartTwo += ExtrapolateTree(sequenceNumberList, true);
                 Console.WriteLine($"The sum of all extrapolated values for part 2 is {resultPartTwo}");
 
             }
         }
 
-        public static long ExtraplorateTree(List<List<int>> sequenceList, bool partTwo = false)
+        public static long ExtrapolateTree(List<List<int>> sequenceList, bool partTwo = false)
         {
             long sum = 0;
             for (int i = 0; i < sequenceList.Count; i++)
