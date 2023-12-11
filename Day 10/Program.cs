@@ -1,8 +1,12 @@
-﻿using System.Drawing;
+﻿// AUTHOR: RICARDO MARTENS
+// DATE: 10/12/2023
+// DAY 10 - ADVENT OF CODE
+
+using System.Drawing;
 
 using Utilities;
 
-namespace Day09
+namespace Day10
 {
     internal class Program
     {
