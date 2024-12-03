@@ -1,3 +1,6 @@
+# Author - Ricardo Martens
+# Day 3 - Advent of Code 2024
+
 import re
 
 def solve_part1():
